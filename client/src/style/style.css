@@ -129,7 +129,6 @@ form p {
   margin-top: 20px;
   font-size: 14px;
   color: #393939;
-  
 }
 
 form p span {
@@ -137,15 +136,19 @@ form p span {
   cursor: pointer;
   text-decoration: underline;
 }
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
 
-/* Avatar Upload */
 .avatar_upload_wrapper {
   display: flex;
   justify-content: center;
   margin-top: -5px;
   margin-bottom: 20px;
 }
-
 .avatar_circle {
   width: 100px;
   height: 100px;

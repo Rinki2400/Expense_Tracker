@@ -2,15 +2,37 @@ import React, { useState } from "react";
 import graph from "../assets/graph.webp";
 import "../style/style.css";
 import { FaChartLine } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { validateLogin, validateSignup } from "../utils/validation";
 
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formErrors, setFormErrors] = useState({});
+  const navigate = useNavigate();
 
-  const toggleForm = () => setIsSignup(!isSignup);
+  const toggleForm = () => {
+    setIsSignup(!isSignup);
+    setFormErrors({});
+  };
 
-  const handleAvatarChange = (e) => {
-    setAvatar(e.target.files[0]);
+  const handleAvatarChange = (e) => setAvatar(e.target.files[0]);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    const errors = isSignup ? validateSignup(formData) : validateLogin(formData);
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      // Proceed with actual submission
+      alert("navigate to dashboard");
+      navigate("/dashboad");
+    }
   };
 
   return (
@@ -29,10 +51,9 @@ function Login() {
                 : "Please enter your details to log in"}
             </p>
 
-            <form className="form_container">
+            <form className="form_container" onSubmit={handleForm}>
               {isSignup && (
                 <>
-                  {/* Avatar upload circle */}
                   <div className="avatar_upload_wrapper">
                     <label htmlFor="avatarInput" className="avatar_circle">
                       {avatar ? (
@@ -57,43 +78,66 @@ function Login() {
                     <div className="input_group">
                       <label>Full Name</label>
                       <div className="input_field">
-                        <input type="text" placeholder="John Doe" />
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                        {formErrors.name && <small className="error">{formErrors.name}</small>}
                       </div>
                     </div>
                     <div className="input_group">
                       <label>Email Address</label>
                       <div className="input_field">
-                        <input type="email" placeholder="john@gmail.com" />
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="john@gmail.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                        {formErrors.email && <small className="error">{formErrors.email}</small>}
                       </div>
                     </div>
                   </div>
                 </>
               )}
 
-              {/* Email field for Login mode */}
               {!isSignup && (
                 <>
                   <label>Email Address</label>
                   <div className="input_field">
-                    <input type="email" placeholder="john@gmail.com" />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="john@gmail.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                    {formErrors.email && <small className="error">{formErrors.email}</small>}
                   </div>
                 </>
               )}
 
               <label>Password</label>
               <div className="input_field">
-                <input type="password" placeholder="Min 8 characters" />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Min 8 characters"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                {formErrors.password && <small className="error">{formErrors.password}</small>}
               </div>
 
               <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
 
               <p>
-                {isSignup
-                  ? "Already have an account?"
-                  : "Don't have an account?"}{" "}
-                <span onClick={toggleForm}>
-                  {isSignup ? "Login" : "Sign up"}
-                </span>
+                {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
+                <span onClick={toggleForm}>{isSignup ? "Login" : "Sign up"}</span>
               </p>
             </form>
           </div>
