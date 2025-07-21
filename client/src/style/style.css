@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(0deg, #e6e4e4 0%, #fbfbfb 100%);
+  background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
   overflow: hidden;
 }
 
@@ -28,8 +28,8 @@ body {
 
 .heading h1 {
   color: #393939;
-  margin-top: 60px;
-  margin-bottom: 150px;
+  margin-top: 50px;
+  margin-bottom: 120px;
 }
 
 .form_container {
@@ -39,16 +39,16 @@ body {
 }
 .form_container .para_heading {
   font-size: 24px;
-  margin-bottom: 20px;
   font-weight: 500;
-  color: #393939;
+  color: #1e1e1e;
 }
 
 .para_heading p {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   color: #585757;
   margin-bottom: 30px;
+  margin-top: 4px;
 }
 
 form label {
@@ -96,7 +96,7 @@ button:hover {
 }
 
 form p {
-  text-align: center;
+  
   margin-top: 20px;
   font-size: 14px;
   color: #393939;
@@ -114,7 +114,7 @@ form p span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fbfbfb 0%, #c8c8c8 100%);
+ background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
   overflow: hidden;
 }
 
