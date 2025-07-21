@@ -1,12 +1,12 @@
-/* style.css */
-
+/* Base Reset */
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
+/* Layout */
 .main_container {
   display: flex;
   height: 100vh;
@@ -28,16 +28,29 @@ body {
 
 .heading h1 {
   color: #393939;
-  margin-top: 50px;
-  margin-bottom: 120px;
+  margin-top: 10px;
+  margin-bottom: 90px;
 }
 
+/* Form Styling */
 .form_container {
-  width: 500px;
-  height: 500px;
-  
+  max-width: 600px;
+  transition: all 0.4s ease-in-out;
+  animation: fadeInSlide 0.4s ease-in-out;
 }
-.form_container .para_heading {
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.para_heading {
   font-size: 24px;
   font-weight: 500;
   color: #1e1e1e;
@@ -53,7 +66,7 @@ body {
 
 form label {
   display: block;
-  font-weight: 500;
+  font-weight: 600;
   margin: 10px 0 5px;
   color: #393939;
   font-size: 15px;
@@ -65,7 +78,7 @@ form label {
 
 .input_field input {
   width: 93%;
-  padding: 12px 15px;
+  padding: 12px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
@@ -75,6 +88,23 @@ form label {
 
 .input_field input:focus {
   border-color: #1585e1;
+}
+
+.input_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.input_group {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .input_row {
+    flex-direction: column;
+  }
 }
 
 button {
@@ -96,10 +126,10 @@ button:hover {
 }
 
 form p {
-  
   margin-top: 20px;
   font-size: 14px;
   color: #393939;
+  
 }
 
 form p span {
@@ -108,13 +138,54 @@ form p span {
   text-decoration: underline;
 }
 
-/* Right side styling */
+/* Avatar Upload */
+.avatar_upload_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+
+.avatar_circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  border: 2px dashed #a855f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s;
+  margin-top: -20px;
+  margin-bottom: -25px;
+}
+
+.avatar_circle:hover {
+  background-color: #f3f4f6;
+}
+
+.plus_icon {
+  font-size: 32px;
+  color: #a855f7;
+  font-weight: bold;
+}
+
+.avatar_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Right Side */
 .right_container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
- background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
+  background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
   overflow: hidden;
 }
 
@@ -127,31 +198,28 @@ form p span {
   opacity: 0.7;
 }
 
-.white_box{
-    background-color: rgb(255, 255, 255);
-    width: 400px;
-    border-radius: 15px;
-    left: 0px;
-    margin-top: 50px;
-    margin-left: 100px;
-    opacity: 1;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    padding-right: 20px;
+.white_box {
+  background-color: #fff;
+  width: 400px;
+  border-radius: 15px;
+  margin-top: 50px;
+  margin-left: 100px;
+  opacity: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 2;
 }
-
 
 .icon_circle {
   width: 55px;
   height: 55px;
-  background: #1B67B1;
+  background: #1b67b1;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  z-index: 1;
 }
 
 .icon {
@@ -177,16 +245,16 @@ form p span {
 }
 
 .blue_box {
-  background-color: #1B67B1;
+  background-color: #1b67b1;
   top: -2%;
   left: -3%;
 }
+
 .purple_box {
-   border: 17px solid #1585e1;
+  border: 17px solid #1585e1;
   bottom: 30%;
   right: -2%;
 }
-
 
 .right_container img {
   width: 80%;
@@ -197,3 +265,75 @@ form p span {
   margin-left: 53%;
 }
 
+/* Media Queries */
+@media (max-width: 1024px) {
+  .right_container img {
+    margin-top: 300px;
+    margin-left: 30%;
+  }
+
+  .white_box {
+    margin-left: 40px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main_container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left_container,
+  .right_container {
+    flex: unset;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .right_container {
+    height: 300px;
+  }
+
+  .right_container img {
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+    margin-top: 100px;
+  }
+
+  .white_box {
+    margin: 0 auto;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .income_info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar_circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .form_container {
+    width: 100%;
+  }
+
+  .input_field input {
+    width: 100%;
+  }
+
+  button {
+    font-size: 15px;
+  }
+
+  .plus_icon {
+    font-size: 24px;
+  }
+}

@@ -5,8 +5,13 @@ import { FaChartLine } from "react-icons/fa";
 
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
+  const [avatar, setAvatar] = useState(null);
 
   const toggleForm = () => setIsSignup(!isSignup);
+
+  const handleAvatarChange = (e) => {
+    setAvatar(e.target.files[0]);
+  };
 
   return (
     <div className="main_container">
@@ -27,17 +32,53 @@ function Login() {
             <form className="form_container">
               {isSignup && (
                 <>
-                  <label>Full Name</label>
-                  <div className="input_field">
-                    <input type="text" placeholder="John Doe" />
+                  {/* Avatar upload circle */}
+                  <div className="avatar_upload_wrapper">
+                    <label htmlFor="avatarInput" className="avatar_circle">
+                      {avatar ? (
+                        <img
+                          src={URL.createObjectURL(avatar)}
+                          alt="Avatar"
+                          className="avatar_image"
+                        />
+                      ) : (
+                        <span className="plus_icon">+</span>
+                      )}
+                    </label>
+                    <input
+                      id="avatarInput"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAvatarChange}
+                      style={{ display: "none" }}
+                    />
+                  </div>
+                  <div className="input_row">
+                    <div className="input_group">
+                      <label>Full Name</label>
+                      <div className="input_field">
+                        <input type="text" placeholder="John Doe" />
+                      </div>
+                    </div>
+                    <div className="input_group">
+                      <label>Email Address</label>
+                      <div className="input_field">
+                        <input type="email" placeholder="john@gmail.com" />
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
 
-              <label>Email Address</label>
-              <div className="input_field">
-                <input type="email" placeholder="john@gmail.com" />
-              </div>
+              {/* Email field for Login mode */}
+              {!isSignup && (
+                <>
+                  <label>Email Address</label>
+                  <div className="input_field">
+                    <input type="email" placeholder="john@gmail.com" />
+                  </div>
+                </>
+              )}
 
               <label>Password</label>
               <div className="input_field">
