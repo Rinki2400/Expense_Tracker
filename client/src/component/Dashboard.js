@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import '../style/Dashboard.css';
+import Navbar from './Navbar';
+import LeftDash from './LeftDash';
+import RightDash from './RightDash';
 
 function Dashboard() {
   return (
-    <div>
-      <h1 >Dashbord</h1>
+    <div className="dashboard_container">
+      <Navbar />
+      <div className="dashboard_main">
+        <LeftDash />
+        <RightDash />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

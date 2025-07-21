@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(223, 221, 221);
+  overflow-x: hidden;
+}
+
+/* Navbar.Css */
+
+.navbar {
+  width: 100%;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(6, 6, 6);
+  line-height: 70px;
+}
+
+/* Dashboard.css */
+
+.dashboard_container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard_main {
+  display: flex;
+  flex: 1;
+  background-color: #f4f7fa;
+}
+
+/* left Dashboad css */
+
+.leftDash_container {
+  width: 250px;
+  background-color: #fbfbfb;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profile_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.profile_container img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile_container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.dash_link {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: rgb(239, 239, 239);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: #dbeafe;
+  color: #1585e1;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.link_icon {
+  font-size: 18px;
+}

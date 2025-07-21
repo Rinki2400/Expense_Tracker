@@ -1,4 +1,4 @@
-/* Base Reset */
+
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -6,7 +6,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Layout */
 .main_container {
   display: flex;
   height: 100vh;
@@ -340,3 +339,6 @@ form p span {
     font-size: 24px;
   }
 }
+
+
+
