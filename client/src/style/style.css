@@ -24,7 +24,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 10px;
 }
 
 .heading h1 {
@@ -48,7 +47,7 @@ body {
 .para_heading p {
   font-size: 16px;
   font-weight: 500;
-  color: #393939;
+  color: #585757;
   margin-bottom: 30px;
 }
 
@@ -125,11 +124,60 @@ form p span {
   width: 200px;
   height: 200px;
   border-radius: 20%;
-  opacity: 0.5;
+  opacity: 0.7;
+}
+
+.white_box{
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    border-radius: 15px;
+    left: 0px;
+    margin-top: 50px;
+    margin-left: 100px;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    padding-right: 20px;
+}
+
+
+.icon_circle {
+  width: 55px;
+  height: 55px;
+  background: #1B67B1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  z-index: 1;
+}
+
+.icon {
+  color: white;
+  font-size: 24px;
+}
+
+.income_info {
+  z-index: 1;
+}
+
+.title {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin: 4px 0 0;
 }
 
 .blue_box {
-  background-color: #1585e1;
+  background-color: #1B67B1;
   top: -2%;
   left: -3%;
 }
