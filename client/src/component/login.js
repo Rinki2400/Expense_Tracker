@@ -4,7 +4,7 @@ import "../style/style.css";
 import { FaChartLine } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { validateLogin, validateSignup } from "../utils/validation";
-
+import { registerUser, loginUser } from "../api/axios"
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [avatar, setAvatar] = useState(null);
@@ -23,15 +23,37 @@ function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
     const errors = isSignup ? validateSignup(formData) : validateLogin(formData);
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      // Proceed with actual submission
-      alert("navigate to dashboard");
-      navigate("/dashboad");
+      try {
+        if (isSignup) {
+          const data = new FormData();
+          data.append("name", formData.name);
+          data.append("email", formData.email);
+          data.append("password", formData.password);
+          if (avatar) data.append("avatar", avatar);
+
+          const res = await registerUser(data);
+          console.log("Registered:", res.message);
+          alert("Registration successful!");
+        } else {
+          const res = await loginUser({
+            email: formData.email,
+            password: formData.password,
+          });
+          console.log("Login:", res.message);
+          alert("Login successful!");
+        }
+
+        navigate("/dashboad");
+      } catch (err) {
+        const msg = err.response?.data?.message || "Something went wrong!";
+        alert(msg);
+      }
     }
   };
 
