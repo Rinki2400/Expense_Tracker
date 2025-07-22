@@ -1,13 +1,22 @@
 import React from "react";
-import img  from '../../assets/graph.webp'
+import img from "../../assets/graph.webp";
 import {
   FaTachometerAlt,
   FaMoneyBillWave,
   FaChartPie,
   FaSignOutAlt,
-} from "react-icons/fa"; 
+} from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
+import "../../style/style.css"; // make sure you import styling if needed
 
 function SideBar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user"); 
+    navigate("/"); 
+  };
+
   return (
     <div className="leftDash_container">
       <div className="profile_container">
@@ -16,22 +25,22 @@ function SideBar() {
       </div>
 
       <div className="dash_link">
-        <a className="link" href="/dashboard/Home">
+        <NavLink to="/dashboard/home" className="link">
           <FaTachometerAlt className="link_icon" />
           Dashboard
-        </a>
-        <a className="link" href="/dashboard/expenses">
+        </NavLink>
+        <NavLink to="/dashboard/expenses" className="link">
           <FaMoneyBillWave className="link_icon" />
           Expenses
-        </a>
-        <a className="link" href="/dashboard/income">
+        </NavLink>
+        <NavLink to="/dashboard/income" className="link">
           <FaChartPie className="link_icon" />
           Income
-        </a>
-        <a className="link" href="/dashboard/logout">
+        </NavLink>
+        <button className="link logout_btn" onClick={handleLogout}>
           <FaSignOutAlt className="link_icon" />
           Logout
-        </a>
+        </button>
       </div>
     </div>
   );

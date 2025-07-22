@@ -9,7 +9,11 @@ import { registerUser, loginUser } from "../../api/axios";
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [avatar, setAvatar] = useState(null);
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
@@ -20,12 +24,11 @@ function Login() {
     setAvatar(null);
   };
 
-const handleAvatarChange = (e) => {
-  const file = e.target.files[0];
-  console.log("Selected avatar file:", file);
-  setAvatar(file);
-};
-
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    console.log("Selected avatar file:", file);
+    setAvatar(file);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +36,9 @@ const handleAvatarChange = (e) => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    const errors = isSignup ? validateSignup(formData) : validateLogin(formData);
+    const errors = isSignup
+      ? validateSignup(formData)
+      : validateLogin(formData);
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
@@ -46,16 +51,22 @@ const handleAvatarChange = (e) => {
           if (avatar) data.append("avatar", avatar);
 
           const res = await registerUser(data);
-          alert(res.message || "Registration successful!");
+
+          if (res.user || res.token) {
+            localStorage.setItem("user", JSON.stringify(res.user || res.token));
+            navigate("/dashboard");
+          }
+
         } else {
           const res = await loginUser({
             email: formData.email,
             password: formData.password,
           });
-          alert(res.message || "Login successful!");
+          if (res.user || res.token) {
+            localStorage.setItem("user", JSON.stringify(res.user || res.token));
+            navigate("/dashboard");
+          }
         }
-
-        navigate("/dashboard");
       } catch (err) {
         const msg = err.response?.data?.message || "Something went wrong!";
         alert(msg);
@@ -72,7 +83,7 @@ const handleAvatarChange = (e) => {
 
         <div className="form_container">
           <div className="para_heading">
-            {isSignup ? "Create an Account" : "Welcome Back"}
+            <h2>{isSignup ? "Create an Account" : "Welcome Back"}</h2>
             <p>
               {isSignup
                 ? "Please fill in your details to sign up"
@@ -102,70 +113,66 @@ const handleAvatarChange = (e) => {
                       style={{ display: "none" }}
                     />
                   </div>
-                  <div className="input_row">
-                    <div className="input_group">
-                      <label>Full Name</label>
-                      <div className="input_field">
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="John Doe"
-                          value={formData.name}
-                          onChange={handleChange}
-                        />
-                        {formErrors.name && <small className="error">{formErrors.name}</small>}
-                      </div>
-                    </div>
-                    <div className="input_group">
-                      <label>Email Address</label>
-                      <div className="input_field">
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="john@gmail.com"
-                          value={formData.email}
-                          onChange={handleChange}
-                        />
-                        {formErrors.email && <small className="error">{formErrors.email}</small>}
-                      </div>
+
+                  <div className="input_group">
+                    <label>Full Name</label>
+                    <div className="input_field">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                      {formErrors.name && (
+                        <small className="error">{formErrors.name}</small>
+                      )}
                     </div>
                   </div>
                 </>
               )}
 
-              {!isSignup && (
-                <>
-                  <label>Email Address</label>
-                  <div className="input_field">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="john@gmail.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                    {formErrors.email && <small className="error">{formErrors.email}</small>}
-                  </div>
-                </>
-              )}
+              <div className="input_group">
+                <label>Email Address</label>
+                <div className="input_field">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="john@gmail.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                  {formErrors.email && (
+                    <small className="error">{formErrors.email}</small>
+                  )}
+                </div>
+              </div>
 
-              <label>Password</label>
-              <div className="input_field">
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Min 8 characters"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-                {formErrors.password && <small className="error">{formErrors.password}</small>}
+              <div className="input_group">
+                <label>Password</label>
+                <div className="input_field">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Min 8 characters"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                  {formErrors.password && (
+                    <small className="error">{formErrors.password}</small>
+                  )}
+                </div>
               </div>
 
               <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
 
-              <p>
-                {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
-                <span onClick={toggleForm}>{isSignup ? "Login" : "Sign up"}</span>
+              <p className="toggle_prompt">
+                {isSignup
+                  ? "Already have an account?"
+                  : "Don't have an account?"}{" "}
+                <span onClick={toggleForm} className="form_toggle_link">
+                  {isSignup ? "Login" : "Sign up"}
+                </span>
               </p>
             </form>
           </div>
