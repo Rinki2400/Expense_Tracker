@@ -4,7 +4,8 @@ import "../style/style.css";
 import { FaChartLine } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { validateLogin, validateSignup } from "../utils/validation";
-import { registerUser, loginUser } from "../api/axios"
+import { registerUser, loginUser } from "../api/axios";
+
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [avatar, setAvatar] = useState(null);
@@ -15,9 +16,16 @@ function Login() {
   const toggleForm = () => {
     setIsSignup(!isSignup);
     setFormErrors({});
+    setFormData({ name: "", email: "", password: "" });
+    setAvatar(null);
   };
 
-  const handleAvatarChange = (e) => setAvatar(e.target.files[0]);
+const handleAvatarChange = (e) => {
+  const file = e.target.files[0];
+  console.log("Selected avatar file:", file);
+  setAvatar(file);
+};
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,15 +46,13 @@ function Login() {
           if (avatar) data.append("avatar", avatar);
 
           const res = await registerUser(data);
-          console.log("Registered:", res.message);
-          alert("Registration successful!");
+          alert(res.message || "Registration successful!");
         } else {
           const res = await loginUser({
             email: formData.email,
             password: formData.password,
           });
-          console.log("Login:", res.message);
-          alert("Login successful!");
+          alert(res.message || "Login successful!");
         }
 
         navigate("/dashboad");
