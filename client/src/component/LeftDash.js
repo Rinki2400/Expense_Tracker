@@ -5,7 +5,7 @@ import {
   FaMoneyBillWave,
   FaChartPie,
   FaSignOutAlt,
-} from "react-icons/fa"; // Updated Logout icon
+} from "react-icons/fa"; 
 
 function LeftDash() {
   return (

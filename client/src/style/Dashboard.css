@@ -1,9 +1,4 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: rgb(223, 221, 221);
-  overflow-x: hidden;
-}
+
 
 /* Navbar.Css */
 
@@ -71,7 +66,7 @@ body {
 .profile_container h2 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+    color: #0c0c0c;
   margin: 0;
 }
 
@@ -89,9 +84,9 @@ body {
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
-  color: #333;
+  color: #0c0c0c;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
@@ -104,4 +99,122 @@ body {
 
 .link_icon {
   font-size: 18px;
+}
+
+
+/* right_dashboard */
+.right_dash_conatainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f5f7fa;
+  height: 100%;
+  width: 80%;
+
+  
+}
+
+/* Top cards section */
+.top_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Bottom container */
+.bottom_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.botton_card {
+  display: flex;
+  gap: 15px;
+}
+
+.left_card,
+.right_card {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.right_dash_conatainer {
+  padding: 20px;
+  background-color: #f5f7fa;
+}
+
+.top_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+}
+
+.purple {
+  background-color: #7b61ff;
+}
+
+.orange {
+  background-color: #f97316;
+}
+
+.red {
+  background-color: #ef4444;
+}
+
+.card_content .title {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.card_content h3 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #111827;
 }
