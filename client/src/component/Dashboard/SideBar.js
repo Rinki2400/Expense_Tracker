@@ -1,5 +1,5 @@
 import React from "react";
-import img  from '../assets/graph.webp'
+import img  from '../../assets/graph.webp'
 import {
   FaTachometerAlt,
   FaMoneyBillWave,
@@ -7,7 +7,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa"; 
 
-function LeftDash() {
+function SideBar() {
   return (
     <div className="leftDash_container">
       <div className="profile_container">
@@ -16,19 +16,19 @@ function LeftDash() {
       </div>
 
       <div className="dash_link">
-        <a className="link" href="/dashboard">
+        <a className="link" href="/dashboard/Home">
           <FaTachometerAlt className="link_icon" />
           Dashboard
         </a>
-        <a className="link" href="/expenses">
+        <a className="link" href="/dashboard/expenses">
           <FaMoneyBillWave className="link_icon" />
           Expenses
         </a>
-        <a className="link" href="/income">
+        <a className="link" href="/dashboard/income">
           <FaChartPie className="link_icon" />
           Income
         </a>
-        <a className="link" href="/logout">
+        <a className="link" href="/dashboard/logout">
           <FaSignOutAlt className="link_icon" />
           Logout
         </a>
@@ -37,4 +37,4 @@ function LeftDash() {
   );
 }
 
-export default LeftDash;
+export default SideBar;

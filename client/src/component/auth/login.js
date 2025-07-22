@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import graph from "../assets/graph.webp";
-import "../style/style.css";
+import graph from "../../assets/graph.webp";
+import "../../style/style.css";
 import { FaChartLine } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { validateLogin, validateSignup } from "../utils/validation";
-import { registerUser, loginUser } from "../api/axios";
+import { validateLogin, validateSignup } from "../../utils/validation";
+import { registerUser, loginUser } from "../../api/axios";
 
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
@@ -55,7 +55,7 @@ const handleAvatarChange = (e) => {
           alert(res.message || "Login successful!");
         }
 
-        navigate("/dashboad");
+        navigate("/dashboard");
       } catch (err) {
         const msg = err.response?.data?.message || "Something went wrong!";
         alert(msg);

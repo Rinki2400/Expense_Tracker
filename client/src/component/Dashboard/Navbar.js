@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/Dashboard.css'
+import '../../style/Dashboard.css'
 
 function Navbar() {
   return (

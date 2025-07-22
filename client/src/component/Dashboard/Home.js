@@ -2,9 +2,9 @@
 import { FaWallet, FaMoneyBillWave} from 'react-icons/fa';
 import { GiPayMoney } from 'react-icons/gi'; 
 
-import "../style/Dashboard.css"
+import "../../style/Dashboard.css"
 
-function RightDash() {
+function Home() {
   return (
     <div className="right_dash_conatainer">
       <div className="top_container">
@@ -44,4 +44,4 @@ function RightDash() {
   );
 }
 
-export default RightDash;
+export default Home;
