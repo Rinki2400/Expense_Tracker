@@ -1,5 +1,4 @@
-import React from "react";
-import img from "../../assets/graph.webp";
+import React, { useEffect, useState } from "react";
 import {
   FaTachometerAlt,
   FaMoneyBillWave,
@@ -7,21 +6,51 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../../style/style.css"; // make sure you import styling if needed
+import "../../style/Dashboard.css";
+import fallbackImg from "../../assets/graph.webp"; // 👈 fallback image
 
 function SideBar() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
+    }
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); 
-    navigate("/"); 
+    localStorage.removeItem("user");
+    navigate("/");
   };
+
+const getAvatarUrl = () => {
+  if (!user?.avatar) return fallbackImg;
+
+  // If it's already a full URL
+  if (user.avatar.startsWith("http")) return user.avatar;
+
+  // Ensure no double slashes and correct folder path
+  return `http://localhost:2000/uploads/avatars/${user.avatar.split("/").pop()}`;
+};
+
+
 
   return (
     <div className="leftDash_container">
       <div className="profile_container">
-        <img src={img} alt="User Avatar" className="profile_img" />
-        <h2>Profile</h2>
+        <img
+          src={getAvatarUrl()}
+          alt="User Avatar"
+          className="profile_img"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = fallbackImg;
+          }}
+        />
+        <h2>{user?.name || "Profile"}</h2>
       </div>
 
       <div className="dash_link">

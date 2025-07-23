@@ -26,4 +26,10 @@ export const loginUser = async ({ email, password }) => {
   return response.data;
 };
 
+
+// get user By api
+export const getUserById = async (id) => {
+  const response = await API.get(`/auth/getUser/${id}`);    
+   return response.data;
+}
 export default API;
