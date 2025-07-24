@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .main_container {
@@ -17,6 +17,7 @@ body {
   flex: 1;
   padding: 40px;
   box-sizing: border-box;
+
 }
 
 .left_container {
@@ -263,7 +264,7 @@ form p span {
   max-width: 450px;
   z-index: 1;
   border-radius: 12px;
-  margin-top: 375px;
+  margin-top: 270px;
   margin-left: 53%;
 }
 

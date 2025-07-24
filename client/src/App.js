@@ -6,6 +6,8 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import Login from "./component/auth/login";
 import Dashboard from "./component/Dashboard/Dashboard";
 import Home from "./component/Dashboard/Home";
@@ -17,18 +19,21 @@ const ProtectedRoute = ({ user }) => {
 };
 
 function App() {
-  const user = localStorage.getItem("user");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    setUser(storedUser);
+  }, []);
 
   return (
     <Router>
       <Routes>
-        {/* Public route */}
         <Route path="/" element={<Login />} />
 
-        {/* Protected routes */}
         <Route element={<ProtectedRoute user={user} />}>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<Home />} /> {/* default to /dashboard */}
+            <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="expenses" element={<Expenses />} />
             <Route path="income" element={<Income />} />
