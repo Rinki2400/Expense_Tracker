@@ -11,7 +11,9 @@ exports.addIncome = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
     if (isNaN(amount) || amount <= 0) {
-      return res.status(400).json({ message: "Amount must be a positive number" });
+      return res
+        .status(400)
+        .json({ message: "Amount must be a positive number" });
     }
     const parsedDate = date ? new Date(date) : new Date();
     if (isNaN(parsedDate.getTime())) {
@@ -29,7 +31,9 @@ exports.addIncome = async (req, res) => {
       date: parsedDate,
     });
     await income.save();
-    return res.status(201).json({ message: "Income added successfully", income });
+    return res
+      .status(201)
+      .json({ message: "Income added successfully", income });
   } catch (error) {
     return res.status(500).json({
       message: "Error adding income",
@@ -38,23 +42,28 @@ exports.addIncome = async (req, res) => {
   }
 };
 
-
 //get all income sources
 exports.getAllIncome = async (req, res) => {
   try {
-    
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const incomes = await Income.find({ user: userId }).sort({ date: -1 });
+    res.status(200).json({ message: "Incomes fetched successfully", incomes });
   } catch (error) {
-    
+    res.status(500).json({
+      message: "Error fetching incomes",
+      error: error.message,
+    });
   }
-}       
+};
 
 //delete income source
 exports.deleteIncomedowloadIncomeExcel = async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-}
+  try {
+  } catch (error) {}
+};
 //download income as excel
 exports.downloadIncomeExcel = async (req, res) => {};
