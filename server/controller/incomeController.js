@@ -61,9 +61,27 @@ exports.getAllIncome = async (req, res) => {
 };
 
 //delete income source
-exports.deleteIncomedowloadIncomeExcel = async (req, res) => {
+exports.deleteIncome = async (req, res) => {
   try {
-  } catch (error) {}
+    const incomeId = req.params.id;
+    const userId = req.user.id;
+
+    const income = await Income.findOne({ _id: incomeId, user: userId });
+
+    if (!income) {
+      return res.status(404).json({ message: "Income not found or unauthorized" });
+    }
+
+    await Income.findByIdAndDelete(incomeId);
+
+    return res.status(200).json({ message: "Income deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error deleting income",
+      error: error.message,
+    });
+  }
 };
+
 //download income as excel
-exports.downloadIncomeExcel = async (req, res) => {};
+exports.deleteIncomedowloadIncomeExcel = async (req, res) => {};
