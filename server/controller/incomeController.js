@@ -1,6 +1,6 @@
 const Income = require("../models/IncomeModel");
 const User = require("../models/UsersModel");
-
+const ExcelJS = require("exceljs");
 //add income source
 exports.addIncome = async (req, res) => {
   try {
@@ -84,4 +84,37 @@ exports.deleteIncome = async (req, res) => {
 };
 
 //download income as excel
-exports.deleteIncomedowloadIncomeExcel = async (req, res) => {};
+exports.downloadIncomeExcel = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const incomes = await Income.find({ user: userId }).sort({ date: -1 });
+
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Income Data");
+
+    worksheet.columns = [
+      { header: "Source", key: "source", width: 30 },
+      { header: "Amount", key: "amount", width: 15 },
+      { header: "Date", key: "date", width: 20 },
+      { header: "Icone", key: "icone", width: 25 },
+    ];
+
+    incomes.forEach((income) => {
+      worksheet.addRow({
+        source: income.source,
+        amount: income.amount,
+        date: new Date(income.date).toLocaleDateString(),
+        icone: income.icone,
+      });
+    });
+
+    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    res.setHeader("Content-Disposition", "attachment; filename=incomes.xlsx");
+
+    await workbook.xlsx.write(res);
+    res.end();
+  } catch (error) {
+    res.status(500).json({ message: "Failed to download Excel", error: error.message });
+  }
+};
