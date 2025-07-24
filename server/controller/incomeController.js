@@ -1,6 +1,7 @@
 const Income = require("../models/IncomeModel");
-const User = require("../models/UsersModel");
-const ExcelJS = require("exceljs");
+const xlsx = require("xlsx");
+
+
 //add income source
 exports.addIncome = async (req, res) => {
   try {
@@ -85,36 +86,21 @@ exports.deleteIncome = async (req, res) => {
 
 //download income as excel
 exports.downloadIncomeExcel = async (req, res) => {
+     const userId = req.user.id;
   try {
-    const userId = req.user.id;
+    const incomes = await Income.find({userId }).sort({ date: -1 });
 
-    const incomes = await Income.find({ user: userId }).sort({ date: -1 });
-
-    const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet("Income Data");
-
-    worksheet.columns = [
-      { header: "Source", key: "source", width: 30 },
-      { header: "Amount", key: "amount", width: 15 },
-      { header: "Date", key: "date", width: 20 },
-      { header: "Icone", key: "icone", width: 25 },
-    ];
-
-    incomes.forEach((income) => {
-      worksheet.addRow({
-        source: income.source,
-        amount: income.amount,
-        date: new Date(income.date).toLocaleDateString(),
-        icone: income.icone,
-      });
-    });
-
-    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-    res.setHeader("Content-Disposition", "attachment; filename=incomes.xlsx");
-
-    await workbook.xlsx.write(res);
-    res.end();
+    const data = incomes.map((item) => ({
+        Source: item.source,
+        Amount: item.amount,
+        Date: item.date,
+        }));
+    const wb = xlsx.utils.book_new();
+    const ws = xlsx.utils.json_to_sheet(data);
+    xlsx.utils.book_append_sheet(wb, ws, "Incomes");
+    xlsx.writeFile(wb, "incomes.details.xlsx");
+    res.download('incomes.details.xlsx')
   } catch (error) {
-    res.status(500).json({ message: "Failed to download Excel", error: error.message });
+    res.status(500).json({ message: "Server error"});
   }
 };

@@ -17,6 +17,7 @@ app.use("/uploads/avatars", express.static("uploads/avatars"));
 
 app.use('/api/auth', require('./routes/authRoutes'))
 app.use('/api/income', require('./routes/IncomeRoutes'))
+app.use('/api/expence', require('./routes/ExpenseRoutes'))
 app.get('/', (req, res) => res.send('Server is running'));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
