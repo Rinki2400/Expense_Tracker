@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
-
+  overflow-x: hidden;
 }
 
 .main_container {

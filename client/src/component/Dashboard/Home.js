@@ -11,7 +11,11 @@ import {
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { BsArrowUpRight, BsArrowDownRight } from "react-icons/bs";
+import {
+  BsArrowUpRight,
+  BsArrowDownRight,
+  BsArrowDownUp,
+} from "react-icons/bs";
 import { GiPayMoney } from "react-icons/gi";
 import { getData } from "../../api/axios";
 import "../../style/Dashboard.css";
@@ -60,6 +64,18 @@ function Home() {
     if (txn.source?.toLowerCase().includes("salary")) return <FaBriefcase />;
     return txn.type === "income" ? <FaMoneyBillWave /> : <GiPayMoney />;
   };
+  const lastFiveIncome = transactions
+    .filter((txn) => txn.type === "income")
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
+
+  const incomePieData = lastFiveIncome.map((txn) => ({
+    name: txn.source || "Unknown",
+    value: txn.amount,
+  }));
+
+  const INCOME_COLORS = ["#22c55e", "#16a34a", "#4ade80", "#86efac", "#bbf7d0"];
+
   const getLast30DaysExpenseData = () => {
     const today = new Date();
     const last30 = Array.from({ length: 30 }, (_, i) => {
@@ -278,6 +294,141 @@ function Home() {
                 <Bar dataKey="amount" fill="#EF4444" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      <div className="bottom_container">
+        <div className="botton_card">
+          {/* Left Section - Last 60 Days Transactions */}
+          <div
+            className="right_card"
+            style={{
+              background: "#fff",
+              borderRadius: "12px",
+              padding: "20px",
+              textAlign: "start",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+            }}
+          >
+            <div
+              className="chart_title"
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "10px",
+                color: "#111827",
+              }}
+            >
+              Last 60 Days Income
+            </div>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={incomePieData}
+                  dataKey="value"
+                  nameKey="name"
+                  outerRadius={100}
+                  innerRadius={80}
+                  label
+                >
+                  {incomePieData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={INCOME_COLORS[index % INCOME_COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+
+            <div
+              className="chart_center_text"
+              style={{
+                marginTop: "15px",
+                marginTop: "-163px",
+                marginLeft: "-132px",
+              }}
+            >
+              <p
+                style={{ fontSize: "14px", marginBottom: "0px", color: "#555" }}
+              >
+                Total Income
+              </p>
+              <h2 style={{ fontSize: "20px", fontWeight: "bold", margin: 0 }}>
+                ₹{dashboardData.totalIncome.toLocaleString()}
+              </h2>
+            </div>
+
+            <div
+              className="chart_legend"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginTop: "20px",
+                fontWeight: "500",
+                fontSize: "14px",
+              }}
+            >
+              {incomePieData.map((entry, index) => (
+                <span
+                  key={`legend-${index}`}
+                  style={{
+                    color: INCOME_COLORS[index % INCOME_COLORS.length],
+                  }}
+                >
+                  ● {entry.name || "Unknown"}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Section - Donut Chart */}
+          <div className="left_card">
+            <div className="transaction_container">
+              <div className="first_section">
+                <div className="chart_title">Income</div>
+                <button
+                  className="see_all_btn"
+                  onClick={() => navigate("/dashboard/income")}
+                >
+                  See All ➔
+                </button>
+              </div>
+
+              <div className="list_section">
+                {transactions.filter((txn) => txn.type === "income").length >
+                0 ? (
+                  transactions
+                    .filter((txn) => txn.type === "income")
+                    .slice(0, 5)
+                    .map((txn) => (
+                      <div className="transaction_item" key={txn._id}>
+                        <div className="left_info">
+                          <div className="icon_circle">
+                            {getIconForTransaction(txn)}
+                          </div>
+                          <div className="transaction_info">
+                            <p className="title">{txn.source || "Unknown"}</p>
+                            <p className="date">
+                              {new Date(txn.date).toLocaleDateString()}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="amount income">
+                          + ₹{txn.amount.toLocaleString()}{" "}
+                          <BsArrowUpRight style={{ color: "green" }} />
+                        </div>
+                      </div>
+                    ))
+                ) : (
+                  <p>No expense transactions found.</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
