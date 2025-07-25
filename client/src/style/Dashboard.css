@@ -231,14 +231,9 @@
   margin-bottom: 20px;
 }
 
-.heading {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
 .see_all_btn {
   background: #f5f7fa;
-  padding: 8px 15px;
+  padding: 3px 5px;
   border: none;
   color: #888;
   font-weight: 500;
@@ -263,9 +258,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 16px;
+  padding: 4px 13px;
   background-color: #f9fafb;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: background-color 0.3s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   cursor: pointer;  
@@ -304,6 +299,8 @@
 .transaction_info .title {
   font-weight: 600;
   color: #111827;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .transaction_info .date {
@@ -317,15 +314,58 @@
 }
 
 .amount.income {
-  color: black;
-  background:lightgreen;
+  color: rgb(2, 182, 2);
+  background:rgb(195, 246, 195);
   padding: 4px 8px;
-
   border-radius: 4px;
   
 }
 
 .amount.expense {
-  color: #dc2626; 
-  background: #000;
+  color: red;
+  background:rgb(249, 201, 198);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+/* right card */
+.right_card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align:start ;
+  position: relative;
+}
+
+.chart_center_text {
+  position: absolute;
+  top: 70%;
+  left: 73%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.chart_title{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #111827;
+}
+.chart_center_text p {
+  font-size: 14px;
+  margin-bottom: -5px;
+  color: #555;
+}
+
+.chart_center_text h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.chart_legend {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: -10px;
+  font-weight: 500;
+  font-size: 14px;
 }
