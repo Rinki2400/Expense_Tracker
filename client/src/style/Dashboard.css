@@ -102,10 +102,6 @@
 /* right_dashboard */
 .right_container {
   padding: 20px 0;
-<<<<<<< HEAD
-  overflow-y: auto;
-=======
->>>>>>> 48ecfb2 ( add expense section in dashboad)
   height: 100%;
 }
 
@@ -141,11 +137,8 @@
 .bottom_container {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
   margin-top: 20px;
-  /* margin-bottom: 20px; */
->>>>>>> 48ecfb2 ( add expense section in dashboad)
+  margin-bottom: 20px;
 }
 
 .botton_card {
@@ -377,9 +370,3 @@
   font-weight: 500;
   font-size: 14px;
 }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 48ecfb2 ( add expense section in dashboad)

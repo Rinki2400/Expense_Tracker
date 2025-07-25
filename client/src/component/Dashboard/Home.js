@@ -8,19 +8,9 @@ import {
   FaBriefcase,
   FaLightbulb,
 } from "react-icons/fa";
-<<<<<<< HEAD
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-} from "recharts";
-
-=======
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
->>>>>>> 48ecfb2 ( add expense section in dashboad)
 import { BsArrowUpRight, BsArrowDownRight } from "react-icons/bs";
 import { GiPayMoney } from "react-icons/gi";
 import { getData } from "../../api/axios";
@@ -62,18 +52,6 @@ function Home() {
   }, []);
 
   const getIconForTransaction = (txn) => {
-<<<<<<< HEAD
-    if (txn.category?.toLowerCase().includes("shopping")) return <FaShoppingBag />;
-    if (txn.category?.toLowerCase().includes("travel")) return <FaPlane />;
-    if (txn.category?.toLowerCase().includes("electricity")) return <FaLightbulb />;
-    if (txn.source?.toLowerCase().includes("salary")) return <FaBriefcase />;
-    return txn.type === "income" ? <FaMoneyBillWave /> : <GiPayMoney />;
-  };
-
-  return (
-    <div className="right_dash_conatainer">
-      {/* Top Cards */}
-=======
     if (txn.category?.toLowerCase().includes("shopping"))
       return <FaShoppingBag />;
     if (txn.category?.toLowerCase().includes("travel")) return <FaPlane />;
@@ -82,38 +60,36 @@ function Home() {
     if (txn.source?.toLowerCase().includes("salary")) return <FaBriefcase />;
     return txn.type === "income" ? <FaMoneyBillWave /> : <GiPayMoney />;
   };
- const getLast30DaysExpenseData = () => {
-  const today = new Date();
-  const last30Days = Array.from({ length: 30 }, (_, i) => {
-    const date = new Date(today);
-    date.setDate(today.getDate() - i);
-    const formattedDate = date.toLocaleDateString("en-GB"); // dd/mm/yyyy
-    return { date: formattedDate, amount: 0 };
-  }).reverse();
+  const getLast30DaysExpenseData = () => {
+    const today = new Date();
+    const last30 = Array.from({ length: 30 }, (_, i) => {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+      const key = date.toLocaleDateString("en-GB"); // dd/mm/yyyy
+      return { date: key, amount: 0 };
+    }).reverse();
 
-  const expenseMap = new Map(last30Days.map((entry) => [entry.date, 0]));
+    const expenseMap = new Map(last30.map((d) => [d.date, 0]));
 
-  transactions
-    .filter((txn) => txn.type === "expense")
-    .forEach((txn) => {
-      const txnDate = new Date(txn.date).toLocaleDateString("en-GB");
-      if (expenseMap.has(txnDate)) {
-        expenseMap.set(txnDate, expenseMap.get(txnDate) + txn.amount);
-      }
-    });
+    transactions
+      .filter((txn) => txn.type === "expense")
+      .forEach((txn) => {
+        const key = new Date(txn.date).toLocaleDateString("en-GB");
+        if (expenseMap.has(key)) {
+          expenseMap.set(key, expenseMap.get(key) + txn.amount);
+        }
+      });
 
-  return Array.from(expenseMap.entries()).map(([date, amount]) => ({
-    date,
-    amount,
-  }));
-};
+    return Array.from(expenseMap.entries()).map(([date, amount]) => ({
+      date,
+      amount,
+    }));
+  };
 
-const last30DaysExpense = getLast30DaysExpenseData();
-
+  const last30DaysExpense = getLast30DaysExpenseData();
   return (
     <div className="right_dash_conatainer">
       {/* Top Cards show total details */}
->>>>>>> 48ecfb2 ( add expense section in dashboad)
       <div className="top_container">
         <div className="card">
           <div className="icon purple">
@@ -146,11 +122,7 @@ const last30DaysExpense = getLast30DaysExpenseData();
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* Bottom Section */}
-=======
       {/* Bottom Section  Recent Transaction*/}
->>>>>>> 48ecfb2 ( add expense section in dashboad)
       <div className="bottom_container">
         <div className="botton_card">
           {/* Left Section - Recent Transactions */}
@@ -158,14 +130,10 @@ const last30DaysExpense = getLast30DaysExpenseData();
             <div className="transaction_container">
               <div className="first_section">
                 <div className="chart_title">Recent Transactions</div>
-<<<<<<< HEAD
-                <button className="see_all_btn" onClick={() => navigate("/dashboard/expenses")}>
-=======
                 <button
                   className="see_all_btn"
                   onClick={() => navigate("/dashboard/expenses")}
                 >
->>>>>>> 48ecfb2 ( add expense section in dashboad)
                   See All ➔
                 </button>
               </div>
@@ -175,22 +143,6 @@ const last30DaysExpense = getLast30DaysExpenseData();
                   transactions.slice(0, 5).map((txn) => (
                     <div className="transaction_item" key={txn._id}>
                       <div className="left_info">
-<<<<<<< HEAD
-                        <div className="icon_circle">{getIconForTransaction(txn)}</div>
-                        <div className="transaction_info">
-                          <p className="title">{txn.category || txn.source || "Unknown"}</p>
-                          <p className="date">{new Date(txn.date).toLocaleDateString()}</p>
-                        </div>
-                      </div>
-                      <div className={`amount ${txn.type === "income" ? "income" : "expense"}`}>
-                        {txn.type === "income" ? (
-                          <>
-                            + ₹{txn.amount.toLocaleString()} <BsArrowUpRight style={{ color: "green" }} />
-                          </>
-                        ) : (
-                          <>
-                            - ₹{txn.amount.toLocaleString()} <BsArrowDownRight style={{ color: "red" }} />
-=======
                         <div className="icon_circle">
                           {getIconForTransaction(txn)}
                         </div>
@@ -217,7 +169,6 @@ const last30DaysExpense = getLast30DaysExpenseData();
                           <>
                             - ₹{txn.amount.toLocaleString()}{" "}
                             <BsArrowDownRight style={{ color: "red" }} />
->>>>>>> 48ecfb2 ( add expense section in dashboad)
                           </>
                         )}
                       </div>
@@ -260,8 +211,6 @@ const last30DaysExpense = getLast30DaysExpenseData();
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-=======
         {/* <DashExpe /> */}
       </div>
 
@@ -331,7 +280,6 @@ const last30DaysExpense = getLast30DaysExpenseData();
             </ResponsiveContainer>
           </div>
         </div>
->>>>>>> 48ecfb2 ( add expense section in dashboad)
       </div>
     </div>
   );

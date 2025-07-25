@@ -3,12 +3,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(0deg, #e6e4e4 0%, #c0d1f8 100%);
-<<<<<<< HEAD
-  overflow: hidden;
-=======
-  overflow-x: hidden;
-  
->>>>>>> 48ecfb2 ( add expense section in dashboad)
+
 }
 
 .main_container {
@@ -31,15 +26,8 @@ body {
   justify-content: center;
 }
 
-<<<<<<< HEAD
-.heading h1 {
-  color: #393939;
-  margin-top: 10px;
-  margin-bottom: 90px;
-}
-=======
 
->>>>>>> 48ecfb2 ( add expense section in dashboad)
+
 
 /* Form Styling */
 .form_container {
