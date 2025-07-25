@@ -33,12 +33,13 @@ function Login() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleForm = async (e) => {
     e.preventDefault();
+
     const errors = isSignup
       ? validateSignup(formData)
       : validateLogin(formData);
+
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
@@ -51,20 +52,33 @@ function Login() {
           if (avatar) data.append("avatar", avatar);
 
           const res = await registerUser(data);
+          const token = res.token;
+          const user = res.user;
 
-          if (res.user || res.token) {
-            localStorage.setItem("user", JSON.stringify(res.user || res.token));
-            navigate("/dashboard");
+          if (token) {
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
+            console.log("Navigating to dashboard...");
+            navigate("/dashboard", { replace: true });
+          } else {
+            alert("Signup failed: token not received");
           }
-
         } else {
           const res = await loginUser({
             email: formData.email,
             password: formData.password,
           });
-          if (res.user || res.token) {
-            localStorage.setItem("user", JSON.stringify(res.user || res.token));
-            navigate("/dashboard");
+
+          const token = res.token; // ✅ correct place
+          const user = res.user;
+
+          if (token) {
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
+            console.log("Navigating to dashboard...");
+            navigate("/dashboard", { replace: true });
+          } else {
+            alert("Login failed: token not received");
           }
         }
       } catch (err) {

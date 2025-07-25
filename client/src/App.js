@@ -23,14 +23,16 @@ function App() {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    setUser(storedUser);
+    setUser(storedUser ? JSON.parse(storedUser) : null); // ✅ fix here
   }, []);
+
+  // Optional loading screen
+  if (user === null && localStorage.getItem("user")) return null;
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-
         <Route element={<ProtectedRoute user={user} />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<Home />} />

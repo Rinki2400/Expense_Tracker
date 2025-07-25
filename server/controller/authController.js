@@ -1,12 +1,12 @@
 const User = require("../models/UsersModel");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 //  create registered
 exports.registerUser = async (req, res) => {
   try {
     const { name, password, email } = req.body;
-    
+
     const avatar = req.file ? `/uploads/avatars/${req.file.filename}` : null;
     const useremail = await User.findOne({ email });
     if (useremail) {
@@ -66,14 +66,14 @@ exports.loginUser = async (req, res) => {
       maxAge: 86400000,
     });
 
-    res.status(200).json({
-      message: "Login successful",
+    res.status(201).json({
+      message: "User registered",
+      token,
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
         avatar: user.avatar,
-        token: token
       },
     });
   } catch (error) {
@@ -85,20 +85,24 @@ exports.loginUser = async (req, res) => {
 // Get user by ID
 exports.getUserById = async (req, res) => {
   try {
-    const userId = req.params.id; 
+    const userId = req.params.id;
     if (!userId) {
       return res.status(400).json({ message: "User ID is required" });
-    } 
+    }
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
-    } 
-    res.status(200).json({
-      id: user._id,
-      name: user.name,
-      email: user.email,
-      avatar: user.avatar,
-    }); 
+    }
+    res.status(201).json({
+      message: "User Logged In",
+      token, 
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
     console.error("Get user error:", error.message);
