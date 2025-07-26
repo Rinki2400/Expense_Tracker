@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
-import { addIncome } from "../../api/axios"; // import your axios-based function
+import { addIncome } from "../../api/axios";
 import "../../style/Income.css";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
   const [form, setForm] = useState({
@@ -27,7 +26,6 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (form.amount <= 0) {
       alert("Amount must be a positive number.");
       return;
@@ -35,7 +33,6 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
 
     try {
       setLoading(true);
-
       const formData = new FormData();
       formData.append("icone", form.icone);
       formData.append("source", form.source);
@@ -43,7 +40,6 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
       formData.append("date", form.date);
 
       await addIncome(formData);
-
       onIncomeAdded();
       onClose();
     } catch (error) {
@@ -56,6 +52,11 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
   return (
     <div className="popup_overlay">
       <div className="popup_box">
+        {/* Close Icon */}
+        <button className="close_icon" onClick={onClose}>
+          &times;
+        </button>
+
         <h2>Add New Income</h2>
         <form onSubmit={handleSubmit}>
           <label>Pick Icon:</label>
@@ -100,9 +101,6 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
             {loading ? "Adding..." : "Add"}
           </button>
         </form>
-        <button className="close_btn" onClick={onClose}>
-          Close
-        </button>
       </div>
     </div>
   );
