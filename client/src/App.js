@@ -7,6 +7,8 @@ import {
   Outlet,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import styles
 
 import Login from "./component/auth/login";
 import Dashboard from "./component/Dashboard/Dashboard";
@@ -23,26 +25,29 @@ function App() {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    setUser(storedUser ? JSON.parse(storedUser) : null); // ✅ fix here
+    setUser(storedUser ? JSON.parse(storedUser) : null);
   }, []);
 
-  // Optional loading screen
+  // Optional loading screen while checking localStorage
   if (user === null && localStorage.getItem("user")) return null;
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route element={<ProtectedRoute user={user} />}>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="expenses" element={<Expenses />} />
-            <Route path="income" element={<Income />} />
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route element={<ProtectedRoute user={user} />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<Home />} />
+              <Route path="home" element={<Home />} />
+              <Route path="expenses" element={<Expenses />} />
+              <Route path="income" element={<Income />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+      <ToastContainer position="top-right" autoClose={2000} />
+    </>
   );
 }
 

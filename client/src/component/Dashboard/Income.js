@@ -63,7 +63,6 @@ function Income() {
 
   return (
     <>
-      <ToastContainer position="top-right" autoClose={2000} />
 
       <div className="main_income_container">
         {/* Popup */}

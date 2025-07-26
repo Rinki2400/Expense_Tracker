@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 import { addIncome } from "../../api/axios";
+import { toast } from "react-toastify";
 import "../../style/Income.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,8 +27,9 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (form.amount <= 0) {
-      alert("Amount must be a positive number.");
+      toast.warning("Amount must be a positive number.");
       return;
     }
 
@@ -40,10 +42,12 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
       formData.append("date", form.date);
 
       await addIncome(formData);
+
+      toast.success("Income added successfully!");
       onIncomeAdded();
       onClose();
     } catch (error) {
-      alert(error?.response?.data?.message || "Failed to add income");
+      toast.error(error?.response?.data?.message || "Failed to add income");
     } finally {
       setLoading(false);
     }
@@ -52,7 +56,7 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
   return (
     <div className="popup_overlay">
       <div className="popup_box">
-        {/* Close Icon */}
+        {/* Close Icon at Top Right */}
         <button className="close_icon" onClick={onClose}>
           &times;
         </button>

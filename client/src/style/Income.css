@@ -33,22 +33,22 @@
   margin: 1px;
 }
 
-.addincome{
-    background-color: #e6e4e8;
-    color: rgb(136, 97, 244);
-    border: none;
-    padding: 10px 16px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.2s ease-in-out;
+.addincome {
+  background-color: #e6e4e8;
+  color: rgb(136, 97, 244);
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .addincome:hover {
-    background-color: #d4d2f7;
-    color: rgb(106, 66, 244);
+  background-color: #d4d2f7;
+  color: rgb(106, 66, 244);
 }
 
 .income_overview_content {
@@ -95,13 +95,12 @@
   text-align: start;
   animation: fadeIn 0.3s ease-in-out;
 }
-label
-{
-    text-align: left;
-    display: block;
-    margin-bottom: -8px;
-    font-weight: 500;
-    color: #374151;
+label {
+  text-align: left;
+  display: block;
+  margin-bottom: -8px;
+  font-weight: 500;
+  color: #374151;
 }
 
 /* Fade-in animation */
@@ -115,7 +114,6 @@ label
     transform: translateY(0);
   }
 }
-
 
 /* Input fields */
 .icon_picker_container {
@@ -131,7 +129,6 @@ label
   cursor: pointer;
   width: fit-content;
   background-color: #f4f4f4;
-
 }
 
 .emoji_picker_popup {
@@ -171,8 +168,8 @@ label
 
 /* Close button */
 .close_icon {
-    text-align: right;
-    width: 100%;
+  text-align: right;
+  width: 100%;
   font-size: 34px;
   background: none;
   border: none;
@@ -224,9 +221,6 @@ label
   color: #6b7280;
 }
 
-
-
-
 /* Income List */
 .income_list {
   display: flex;
@@ -234,7 +228,6 @@ label
   gap: 14px;
   margin-top: 10px;
 }
-
 
 /* Left info */
 .income_list {
