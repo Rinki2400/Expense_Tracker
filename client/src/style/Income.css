@@ -1,0 +1,274 @@
+.main_income_container {
+  padding: 20px;
+  width: 100%;
+  background-color: #f5f7fa;
+  margin-top: -20px;
+  box-sizing: border-box;
+}
+
+.income_overview {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.income_overview_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.income_title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+.income_overview_desc p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 1px;
+}
+
+.addincome {
+  background-color: #e7e6f9;
+  color: rgb(136, 97, 244);
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addincome:hover {
+  background-color: #d4d2f7;
+  color: rgb(106, 66, 244);
+}
+
+.income_overview_content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.barchart {
+  background-color: #eef2ff;
+  height: 400px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* popup income */
+.popup_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup_box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.popup_box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.addincome {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.close_btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+/* list */
+/* Container */
+.main_income_container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Section Box */
+.income_overview {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Section Header */
+.income_overview_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.income_title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.income_overview_desc p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Button */
+.addincome {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.addincome:hover {
+  background-color: #7c3aed;
+}
+
+/* Income List */
+.income_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.income_item {
+  flex: 1 1 45%;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.income_item:hover {
+  background-color: #e0e7ff;
+}
+
+/* Left info */
+.income_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.income_item {
+  flex: 1 1 45%;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.income_item:hover {
+  background-color: #e0e7ff;
+}
+
+.income_left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.income_icon {
+  font-size: 24px;
+  color: #4f46e5;
+  background-color: #e0e7ff;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.income_info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.income_info p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.income_right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.income_amount {
+  color: rgb(2, 182, 2);
+  background: rgb(195, 246, 195);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.delete_btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #a3a1a1;
+  font-size: 18px;
+}

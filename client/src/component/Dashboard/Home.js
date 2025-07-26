@@ -2,19 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaWallet,
-  FaMoneyBillWave,
-  FaShoppingBag,
-  FaPlane,
-  FaBriefcase,
-  FaLightbulb,
+  FaMoneyBillWave
 } from "react-icons/fa";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import {
   BsArrowUpRight,
-  BsArrowDownRight,
-  BsArrowDownUp,
+  BsArrowDownRight
 } from "react-icons/bs";
 import { GiPayMoney } from "react-icons/gi";
 import { getData } from "../../api/axios";
@@ -29,7 +23,7 @@ function Home() {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
 
-  const COLORS = ["#6366F1", "#EF4444", "#F97316"]; // purple, red, orange
+  const COLORS = ["#6366F1", "#EF4444", "#F97316"]; 
 
   const pieData = [
     { name: "Total Balance", value: dashboardData.totalBalance },
@@ -55,15 +49,7 @@ function Home() {
     fetchDashboardData();
   }, []);
 
-  const getIconForTransaction = (txn) => {
-    if (txn.category?.toLowerCase().includes("shopping"))
-      return <FaShoppingBag />;
-    if (txn.category?.toLowerCase().includes("travel")) return <FaPlane />;
-    if (txn.category?.toLowerCase().includes("electricity"))
-      return <FaLightbulb />;
-    if (txn.source?.toLowerCase().includes("salary")) return <FaBriefcase />;
-    return txn.type === "income" ? <FaMoneyBillWave /> : <GiPayMoney />;
-  };
+
   const lastFiveIncome = transactions
     .filter((txn) => txn.type === "income")
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -148,7 +134,7 @@ function Home() {
                 <div className="chart_title">Recent Transactions</div>
                 <button
                   className="see_all_btn"
-                  onClick={() => navigate("/dashboard/expenses")}
+                  onClick={() => navigate("/dashboard/")}
                 >
                   See All ➔
                 </button>
@@ -160,7 +146,7 @@ function Home() {
                     <div className="transaction_item" key={txn._id}>
                       <div className="left_info">
                         <div className="icon_circle">
-                          {getIconForTransaction(txn)}
+                         {txn.icone || "💰"}
                         </div>
                         <div className="transaction_info">
                           <p className="title">
@@ -256,7 +242,7 @@ function Home() {
                       <div className="transaction_item" key={txn._id}>
                         <div className="left_info">
                           <div className="icon_circle">
-                            {getIconForTransaction(txn)}
+                            {txn.icone || "💰"}
                           </div>
                           <div className="transaction_info">
                             <p className="title">{txn.category || "Unknown"}</p>
@@ -346,7 +332,6 @@ function Home() {
             <div
               className="chart_center_text"
               style={{
-                marginTop: "15px",
                 marginTop: "-163px",
                 marginLeft: "-132px",
               }}
@@ -409,7 +394,7 @@ function Home() {
                       <div className="transaction_item" key={txn._id}>
                         <div className="left_info">
                           <div className="icon_circle">
-                            {getIconForTransaction(txn)}
+                            {txn.icone || "💰"}
                           </div>
                           <div className="transaction_info">
                             <p className="title">{txn.source || "Unknown"}</p>

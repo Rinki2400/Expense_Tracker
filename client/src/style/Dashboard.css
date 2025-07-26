@@ -86,6 +86,7 @@
   font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease;
+  border: none;
 }
 
 .link:hover {
@@ -156,7 +157,6 @@
   text-align: center;
   font-weight: bold;
   font-size: 18px;
-
 }
 
 .right_dash_conatainer {
@@ -224,7 +224,6 @@
 
 /* //transaction section */
 
-
 .first_section {
   display: flex;
   justify-content: space-between;
@@ -233,16 +232,18 @@
 }
 
 .see_all_btn {
-  background: #f5f7fa;
-  padding: 3px 5px;
+  background: #ebebeb;
+  padding: 3px 3px;
   border: none;
-  color: #888;
+  color: #616060;
   font-weight: 500;
   width: 120px;
   cursor: pointer;
+  border-radius: 8px;
+
 }
 .see_all_btn:hover {
-  background: #e0e7ff;
+  background: #d0d0d1;
   color: #2563eb;
   transition: all 0.3s ease;
 }
@@ -252,7 +253,7 @@
   flex-direction: column;
   gap: 16px;
   padding-right: 4px; /* optional spacing */
-  overflow: hidden;   /* ensures no scroll shows */
+  overflow: hidden; /* ensures no scroll shows */
 }
 
 .transaction_item {
@@ -264,14 +265,13 @@
   border-radius: 12px;
   transition: background-color 0.3s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .transaction_item:hover {
   background-color: #eef2f7;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-
 }
 
 .left_info {
@@ -316,15 +316,14 @@
 
 .amount.income {
   color: rgb(2, 182, 2);
-  background:rgb(195, 246, 195);
+  background: rgb(195, 246, 195);
   padding: 4px 8px;
   border-radius: 4px;
-  
 }
 
 .amount.expense {
   color: red;
-  background:rgb(249, 201, 198);
+  background: rgb(249, 201, 198);
   padding: 4px 8px;
   border-radius: 4px;
 }
@@ -333,7 +332,7 @@
   background: #fff;
   border-radius: 12px;
   padding: 20px;
-  text-align:start ;
+  text-align: start;
   position: relative;
 }
 
@@ -344,7 +343,7 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.chart_title{
+.chart_title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -369,4 +368,28 @@
   margin-top: -10px;
   font-weight: 500;
   font-size: 14px;
+}
+
+/* delete btn */
+
+.right_action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.delete_icon_btn {
+  background: transparent;
+  border: none;
+  color: #808080;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  transition: transform 0.2s ease;
+}
+
+.transaction_item:hover .delete_icon_btn {
+  display: inline-block;
+  transform: scale(1.05);
 }

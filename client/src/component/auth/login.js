@@ -178,7 +178,7 @@ function Login() {
                 </div>
               </div>
 
-              <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
+              <button className="loginbtn" type="submit">{isSignup ? "Sign Up" : "Login"}</button>
 
               <p className="toggle_prompt">
                 {isSignup

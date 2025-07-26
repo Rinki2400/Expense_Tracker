@@ -66,7 +66,7 @@ const getAvatarUrl = () => {
           <FaChartPie className="link_icon" />
           Income
         </NavLink>
-        <button className="link logout_btn" onClick={handleLogout}>
+        <button className="link " onClick={handleLogout}>
           <FaSignOutAlt className="link_icon" />
           Logout
         </button>

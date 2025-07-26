@@ -104,7 +104,7 @@ form label {
   }
 }
 
-button {
+.loginbtn {
   width: 100%;
   padding: 12px;
   background-color: #1585e1;
@@ -118,7 +118,7 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
+.loginbtn:hover {
   background-color: #0473ce;
 }
 
