@@ -17,7 +17,7 @@ app.use("/uploads/avatars", express.static("uploads/avatars"));
 
 app.use('/api/auth', require('./routes/authRoutes'))
 app.use('/api/income', require('./routes/IncomeRoutes'))
-app.use('/api/expence', require('./routes/ExpenseRoutes'))
+app.use('/api/expense', require('./routes/ExpenseRoutes'))
 app.use('/api/dashboard', require('./routes/DashboardRoutes'))
 app.get('/', (req, res) => res.send('Server is running'));
 

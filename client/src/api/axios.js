@@ -115,10 +115,19 @@ export const deleteExpense = async (id) => {
   return response.data;
 };
 
-// Download Expense (Optional)
-// export const downloadExpense = async () => {
-//   const response = await API.get("/expense/download", { responseType: "blob" });
-//   return response.data;
-// };
+export const downloadExpenseExcel = async () => {
+  const response = await API.get("/expense/download", {
+    responseType: "blob",
+  });
+
+  const url = window.URL.createObjectURL(new Blob([response.data]));
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", "expenseExcel.xlsx");
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+};
+
 
 export default API;

@@ -292,6 +292,12 @@ label {
   border-radius: 4px;
 }
 
+.expense_amount{
+  color: rgb(182, 2, 35);
+  background: rgb(248, 187, 189);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
 .delete_btn {
   background: transparent;
   border: none;

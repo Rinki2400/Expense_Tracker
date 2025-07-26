@@ -18,7 +18,7 @@ import {
   Cell,
 } from "recharts";
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import AddIncomePopup from "../../component/Dashboard/AddIncomePopup";
