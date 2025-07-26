@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import EmojiPicker from "emoji-picker-react";
+import { addIncome } from "../../api/axios"; // import your axios-based function
 import "../../style/Income.css";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
   const [form, setForm] = useState({
@@ -9,31 +13,43 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
     date: "",
   });
 
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const onEmojiClick = (emojiData) => {
+    setForm({ ...form, icone: emojiData.emoji });
+    setShowEmojiPicker(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await fetch("/api/income", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: "Bearer your_token" if needed
-        },
-        body: JSON.stringify(form),
-      });
 
-      const data = await res.json();
-      if (res.ok) {
-        onIncomeAdded(); // refresh income list
-        onClose(); // close popup
-      } else {
-        alert(data.message || "Something went wrong");
-      }
+    if (form.amount <= 0) {
+      alert("Amount must be a positive number.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const formData = new FormData();
+      formData.append("icone", form.icone);
+      formData.append("source", form.source);
+      formData.append("amount", form.amount);
+      formData.append("date", form.date);
+
+      await addIncome(formData);
+
+      onIncomeAdded();
+      onClose();
     } catch (error) {
-      alert("Failed to add income");
+      alert(error?.response?.data?.message || "Failed to add income");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,18 +58,25 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
       <div className="popup_box">
         <h2>Add New Income</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="icone"
-            placeholder="Icon (e.g. 💼)"
-            value={form.icone}
-            onChange={handleChange}
-            required
-          />
+          <label>Pick Icon:</label>
+          <div className="icon_picker_container">
+            <div
+              className="icon_display"
+              onClick={() => setShowEmojiPicker((prev) => !prev)}
+            >
+              {form.icone || "🖼️"}
+            </div>
+            {showEmojiPicker && (
+              <div className="emoji_picker_popup">
+                <EmojiPicker onEmojiClick={onEmojiClick} />
+              </div>
+            )}
+          </div>
+
           <input
             type="text"
             name="source"
-            placeholder="Source"
+            placeholder="Source (e.g. Salary, Freelance)"
             value={form.source}
             onChange={handleChange}
             required
@@ -73,9 +96,13 @@ const AddIncomePopup = ({ onClose, onIncomeAdded }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit" className="addincome">Add</button>
+          <button type="submit" className="addincome" disabled={loading}>
+            {loading ? "Adding..." : "Add"}
+          </button>
         </form>
-        <button className="close_btn" onClick={onClose}>Close</button>
+        <button className="close_btn" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );

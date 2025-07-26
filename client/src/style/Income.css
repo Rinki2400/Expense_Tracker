@@ -34,20 +34,20 @@
 }
 
 .addincome {
-  background-color: #e7e6f9;
-  color: rgb(136, 97, 244);
-  border: none;
-  padding: 10px 16px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+    background-color: #e6e4e8;
+    color: rgb(136, 97, 244);
+    border: none;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .addincome:hover {
-  background-color: #d4d2f7;
-  color: rgb(106, 66, 244);
+    background-color: #d4d2f7;
+    color: rgb(106, 66, 244);
 }
 
 .income_overview_content {
@@ -69,6 +69,7 @@
 }
 
 /* popup income */
+/* Overlay background */
 .popup_overlay {
   position: fixed;
   top: 0;
@@ -77,46 +78,111 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
+  align-items: center;
+  z-index: 999;
 }
 
+/* Popup box styling */
 .popup_box {
-  background: #fff;
+  background-color: #fff;
   padding: 30px;
   border-radius: 12px;
   width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+label
+{
+    text-align: left;
+    display: block;
+    margin-bottom: -8px;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Input fields */
+.icon_picker_container {
+  position: relative;
+  margin-bottom: 15px;
+  /* margin-left: 10px; */
+}
+
+.icon_display {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  background-color: #f4f4f4;
+
+}
+
+.emoji_picker_popup {
+  position: absolute;
+  top: 50px;
+  z-index: 999;
 }
 
 .popup_box input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+  padding: 10px 14px;
+  margin: 12px 0;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
 }
 
-.addincome {
+/* Submit button */
+.popup_box .addincome {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
   background-color: #8b5cf6;
   color: white;
   border: none;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.popup_box .addincome:hover {
+  background-color: #7c3aed;
+}
+
+/* Close button */
 .close_btn {
-  background: #ef4444;
+  margin-top: 15px;
+  background-color: #ef4444;
   color: white;
-  border: none;
   padding: 10px 14px;
-  margin-top: 10px;
-  border-radius: 6px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
+  width: 100%;
+}
+
+.close_btn:hover {
+  background-color: #dc2626;
 }
 
 
@@ -159,24 +225,8 @@
   color: #6b7280;
 }
 
-/* Button */
-.addincome {
-  background-color: #8b5cf6;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
 
-.addincome:hover {
-  background-color: #7c3aed;
-}
+
 
 /* Income List */
 .income_list {
@@ -187,19 +237,21 @@
 }
 
 .income_item {
-  flex: 1 1 45%;
-  background-color: #f3f4f6;
-  border-radius: 10px;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex: 1 1 45%;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .income_item:hover {
-  background-color: #e0e7ff;
+    background-color: #eef2f7;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 /* Left info */

@@ -4,6 +4,8 @@ const User = require("../models/UsersModel");
 
 
 //add income source
+
+
 exports.addIncome = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -12,19 +14,21 @@ exports.addIncome = async (req, res) => {
     if (!icone || !source || !amount) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
     if (isNaN(amount) || amount <= 0) {
-      return res
-        .status(400)
-        .json({ message: "Amount must be a positive number" });
+      return res.status(400).json({ message: "Amount must be a positive number" });
     }
+
     const parsedDate = date ? new Date(date) : new Date();
     if (isNaN(parsedDate.getTime())) {
       return res.status(400).json({ message: "Invalid date format" });
     }
+
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+
     const income = new Income({
       user: userId,
       icone,
@@ -32,15 +36,12 @@ exports.addIncome = async (req, res) => {
       amount,
       date: parsedDate,
     });
+
     await income.save();
-    return res
-      .status(201)
-      .json({ message: "Income added successfully", income });
+    return res.status(201).json({ message: "Income added successfully", income });
   } catch (error) {
-    return res.status(500).json({
-      message: "Error adding income",
-      error: error.message,
-    });
+    console.error("Error in addIncome:", error);
+    return res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -87,21 +88,29 @@ exports.deleteIncome = async (req, res) => {
 
 //download income as excel
 exports.downloadIncomeExcel = async (req, res) => {
-     const userId = req.user.id;
+  const userId = req.user.id;
   try {
-    const incomes = await Income.find({userId }).sort({ date: -1 });
+    const incomes = await Income.find({ user: userId }).sort({ date: -1 });
 
     const data = incomes.map((item) => ({
-        Source: item.source,
-        Amount: item.amount,
-        Date: item.date,
-        }));
+      Icon: item.icone,
+      Source: item.source,
+      Amount: item.amount,
+      Date: new Date(item.date).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+    }));
+
     const wb = xlsx.utils.book_new();
     const ws = xlsx.utils.json_to_sheet(data);
-    xlsx.utils.book_append_sheet(wb, ws, "Incomes");
-    xlsx.writeFile(wb, "incomes.details.xlsx");
-    res.download('incomes.details.xlsx')
+    xlsx.utils.book_append_sheet(wb, ws, "Income");
+
+    const filePath = "incomes.details.xlsx";
+    xlsx.writeFile(wb, filePath);
+    res.download(filePath);
   } catch (error) {
-    res.status(500).json({ message: "Server error"});
+    res.status(500).json({ message: "Server error while exporting Excel" });
   }
 };

@@ -67,7 +67,7 @@ function Home() {
     const last30 = Array.from({ length: 30 }, (_, i) => {
       const date = new Date(today);
       date.setDate(today.getDate() - i);
-      const key = date.toLocaleDateString("en-GB"); // dd/mm/yyyy
+      const key = date.toLocaleDateString("en-GB"); 
       return { date: key, amount: 0 };
     }).reverse();
 
