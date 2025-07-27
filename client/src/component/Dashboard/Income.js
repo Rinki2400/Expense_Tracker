@@ -90,7 +90,7 @@ function Income() {
           <div className="income_overview_content">
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={incomeData}>
-                <CartesianGrid strokeDasharray="3 3" />
+                {/* <CartesianGrid strokeDasharray="3 3" /> */}
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />

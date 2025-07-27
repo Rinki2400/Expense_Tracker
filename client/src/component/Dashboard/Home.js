@@ -269,7 +269,7 @@ function Home() {
             <div className="chart_title">Last 30 Days Expense</div>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={last30DaysExpense}>
-                <CartesianGrid strokeDasharray="3 3" />
+                
                 <XAxis
                   dataKey="date"
                   tick={{ fontSize: 10 }}

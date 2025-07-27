@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const upload = multer(); // no storage needed, we’re just handling form fields
+const upload = multer(); 
 
 const {
   addIncome,

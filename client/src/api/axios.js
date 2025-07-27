@@ -126,7 +126,7 @@ export const downloadExpenseExcel = async () => {
   link.setAttribute("download", "expenseExcel.xlsx");
   document.body.appendChild(link);
   link.click();
-  link.remove();
+ document.body.removeChild(link);
 };
 
 

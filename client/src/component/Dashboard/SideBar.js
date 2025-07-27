@@ -22,7 +22,7 @@ function SideBar() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.clear();
     navigate("/");
   };
 

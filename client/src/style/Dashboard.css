@@ -240,7 +240,6 @@
   width: 120px;
   cursor: pointer;
   border-radius: 8px;
-
 }
 .see_all_btn:hover {
   background: #d0d0d1;
@@ -392,4 +391,115 @@
 .transaction_item:hover .delete_icon_btn {
   display: inline-block;
   transform: scale(1.05);
+}
+
+.logout_buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm_btn,
+.cancel_btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.confirm_btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.cancel_btn {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+/* Responsive Design   */
+@media (max-width: 768px) {
+  .leftDash_container {
+    width: 200px;
+    padding: 15px;
+  }
+
+  .right_dash_conatainer {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .top_container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .botton_card {
+    flex-direction: column;
+  }
+
+  .profile_container h2 {
+    font-size: 16px;
+  }
+
+  .card_content h3 {
+    font-size: 18px;
+  }
+
+  .chart_center_text {
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Mobiles (480px and below) */
+@media (max-width: 480px) {
+  .dashboard_main {
+    flex-direction: column;
+  }
+
+  .leftDash_container {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .profile_container {
+    display: none; /* Optional: hide avatar on mobile */
+  }
+
+  .dash_link {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .top_container,
+  .botton_card {
+    flex-direction: column;
+  }
+
+  .card,
+  .left_card,
+  .right_card {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .chart_center_text h2 {
+    font-size: 20px;
+  }
 }

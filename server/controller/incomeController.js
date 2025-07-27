@@ -88,29 +88,22 @@ exports.deleteIncome = async (req, res) => {
 
 //download income as excel
 exports.downloadIncomeExcel = async (req, res) => {
-  const userId = req.user.id;
+     const userId = req.user.id;
   try {
-    const incomes = await Income.find({ user: userId }).sort({ date: -1 });
+    const incomes = await Income.find({userId }).sort({ date: -1 });
 
     const data = incomes.map((item) => ({
-      Icon: item.icone,
-      Source: item.source,
-      Amount: item.amount,
-      Date: new Date(item.date).toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }),
-    }));
-
+        Icon: item.icone,
+        Source: item.source,
+        Amount: item.amount,
+        Date: item.date,
+        }));
     const wb = xlsx.utils.book_new();
     const ws = xlsx.utils.json_to_sheet(data);
-    xlsx.utils.book_append_sheet(wb, ws, "Income");
-
-    const filePath = "incomes.details.xlsx";
-    xlsx.writeFile(wb, filePath);
-    res.download(filePath);
+    xlsx.utils.book_append_sheet(wb, ws, "Incomes");
+    xlsx.writeFile(wb, "incomes.details.xlsx");
+    res.download('incomes.details.xlsx')
   } catch (error) {
-    res.status(500).json({ message: "Server error while exporting Excel" });
+    res.status(500).json({ message: "Server error"});
   }
 };
