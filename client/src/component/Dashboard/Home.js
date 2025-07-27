@@ -4,7 +4,7 @@ import {
   FaWallet,
   FaMoneyBillWave
 } from "react-icons/fa";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import {
   BsArrowUpRight,

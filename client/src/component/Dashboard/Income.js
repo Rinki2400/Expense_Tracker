@@ -4,7 +4,6 @@ import {
   deleteIncome,
   downloadIncomeExcel,
 } from "../../api/axios";
-
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiDownload, FiTrash2, FiTrendingUp } from "react-icons/fi";
 import {
@@ -13,7 +12,6 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   Cell,
 } from "recharts";

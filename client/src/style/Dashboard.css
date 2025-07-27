@@ -251,8 +251,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-right: 4px; /* optional spacing */
-  overflow: hidden; /* ensures no scroll shows */
+  padding-right: 4px;
+  overflow: hidden;
 }
 
 .transaction_item {

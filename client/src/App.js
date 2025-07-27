@@ -15,6 +15,7 @@ import Dashboard from "./component/Dashboard/Dashboard";
 import Home from "./component/Dashboard/Home";
 import Expenses from "./component/Dashboard/Expenses";
 import Income from "./component/Dashboard/Income";
+import NotFound from "./component/Dashboard/NotFound";
 
 const ProtectedRoute = ({ user }) => {
   return user ? <Outlet /> : <Navigate to="/" replace />;
@@ -43,6 +44,7 @@ function App() {
               <Route path="expenses" element={<Expenses />} />
               <Route path="income" element={<Income />} />
             </Route>
+             <Route path="*" element={<NotFound/>} />
           </Route>
         </Routes>
       </Router>
