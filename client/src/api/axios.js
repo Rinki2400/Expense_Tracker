@@ -1,8 +1,11 @@
 import axios from "axios";
 
-// Create axios instance with base URL
+// Detect environment and set base URL
 const API = axios.create({
-  baseURL: "https://expense-tracker-4wi0.onrender.com/api",
+  baseURL:
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000/api" // Local backend
+      : "https://expense-tracker-4wi0.onrender.com/api", // Render backend
 });
 
 // Automatically attach token from localStorage
@@ -13,6 +16,7 @@ API.interceptors.request.use((config) => {
   }
   return config;
 });
+
 
 //
 // =================== AUTH ===================
