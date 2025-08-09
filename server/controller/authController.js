@@ -19,7 +19,7 @@ exports.registerUser = async (req, res) => {
       avatar,
     });
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "24d",
     });
 
     res.cookie("token", token, {
@@ -57,7 +57,7 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "24d",
     });
     res.cookie("token", token, {
       httpOnly: true,
