@@ -15,12 +15,13 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://expense-tracker-oicsars44-rinki2400s-projects.vercel.app",
+      "https://expense-tracker-three-flax.vercel.app", // new one
     ],
-
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads/avatars", express.static("uploads/avatars"));
