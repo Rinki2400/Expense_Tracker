@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance with base URL
 const API = axios.create({
-  baseURL: "http://localhost:2000/api",
+  baseURL: "https://expense-tracker-4wi0.onrender.com/api",
 });
 
 // Automatically attach token from localStorage
