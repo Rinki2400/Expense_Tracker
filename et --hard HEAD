@@ -1,0 +1,60 @@
+[33mc7540ed[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: commit: deployment changes
+[33mba2c2fd[m HEAD@{1}: commit: deployment changes
+[33m2ae4f55[m HEAD@{2}: commit: deployment changes
+[33m708c18b[m HEAD@{3}: commit: deployment changes
+[33m6349483[m HEAD@{4}: commit: again deploy
+[33mc1a2371[m HEAD@{5}: commit: again deploy
+[33m946ff29[m HEAD@{6}: commit: again deploy
+[33m8ec7386[m HEAD@{7}: commit: live api edid on axios
+[33mbbb1218[m HEAD@{8}: commit: live api edid on axios
+[33mc041a73[m HEAD@{9}: commit: edit code
+[33ma9ca713[m HEAD@{10}: commit: add readme
+[33m6946489[m HEAD@{11}: commit: not found page created
+[33mc418579[m HEAD@{12}: commit: not found page created
+[33m85805ce[m HEAD@{13}: commit: completed Expense Tracker Project
+[33m61c9d8d[m HEAD@{14}: commit: woking on expense component
+[33mdb58b47[m HEAD@{15}: commit: complete working income component
+[33md87ec89[m HEAD@{16}: commit: complete working income component
+[33mdebe8da[m HEAD@{17}: commit: complete working income component
+[33m2efe430[m HEAD@{18}: commit: working on income component
+[33m881dca2[m HEAD@{19}: rebase (finish): returning to refs/heads/main
+[33m881dca2[m HEAD@{20}: commit: income section in dashboad
+[33ma3bde1b[m HEAD@{21}: commit: add expense section in dashboad
+[33m4b87745[m HEAD@{22}: commit: add expense section in dashboad
+[33m8d2f18e[m HEAD@{23}: pull origin main --rebase (start): checkout 8d2f18e2952ebefac3f38f11d13ba74b6c916ba1
+[33m48ecfb2[m HEAD@{24}: commit (initial): add expense section in dashboad
+[33m8d2f18e[m HEAD@{25}: commit: dashboad pie chart created
+[33m446e95b[m HEAD@{26}: commit: working on dashboad
+[33mf17e120[m HEAD@{27}: reset: moving to HEAD
+[33mf17e120[m HEAD@{28}: commit: set all api in axios file
+[33m0ff912d[m HEAD@{29}: commit: dashboad api created
+[33m2850634[m HEAD@{30}: commit: expense dowlode
+[33m3ad5f7d[m HEAD@{31}: commit: deleted expense
+[33m1830f4c[m HEAD@{32}: commit: Expense add api created
+[33mcd95466[m HEAD@{33}: commit: dowlode excel
+[33m6a9591c[m HEAD@{34}: commit: icome dected by userId and IncomeId
+[33m445c0e8[m HEAD@{35}: commit: get all icome
+[33md63fb2a[m HEAD@{36}: commit: add income working
+[33m4f63567[m HEAD@{37}: commit: login prblm solve
+[33mcb93841[m HEAD@{38}: reset: moving to HEAD
+[33mcb93841[m HEAD@{39}: reset: moving to HEAd
+[33mcb93841[m HEAD@{40}: reset: moving to HEAD
+[33mcb93841[m HEAD@{41}: reset: moving to HEAD
+[33mcb93841[m HEAD@{42}: commit: add income
+[33m8326309[m HEAD@{43}: commit: profile details showing
+[33m82f2720[m HEAD@{44}: commit: get user by id api
+[33mbff2686[m HEAD@{45}: commit: working frontend
+[33mcf28756[m HEAD@{46}: commit: use outlet & nested routes
+[33m282cc00[m HEAD@{47}: commit: registed with avtar Successfully
+[33m02f3842[m HEAD@{48}: commit: backend working frontend had some issur while registration
+[33mf44309e[m HEAD@{49}: commit: login and registration api done
+[33mc481b53[m HEAD@{50}: commit: basic dashboad structure
+[33m4e6c5a4[m HEAD@{51}: commit: navbar & left side dashboad created
+[33m79fbee6[m HEAD@{52}: commit: add form validation/ utils
+[33mcabcb54[m HEAD@{53}: commit: add signup in a form '
+[33m838442f[m HEAD@{54}: commit: add signup in a form '
+[33m6b0e84a[m HEAD@{55}: commit: edit some content in login
+[33m43a4ae6[m HEAD@{56}: commit: login page frontend completed
+[33mad864a1[m HEAD@{57}: commit: login setup
+[33mb8e44b2[m HEAD@{58}: commit: all setup done
+[33m11c58e8[m HEAD@{59}: commit (initial): all setup done
