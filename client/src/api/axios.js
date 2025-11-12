@@ -145,6 +145,9 @@ const API = axios.create({
     window.location.hostname === "localhost"
       ? "http://localhost:2000/api" // Local backend
       : "https://expense-tracker-4wi0.onrender.com/api", // Render backend
+      
+  
+  
   withCredentials: true, // ✅ required for Vercel + Render cookie/token exchange
 });
 
