@@ -26,20 +26,17 @@ function Login() {
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    console.log("Selected avatar file:", file);
     setAvatar(file);
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleForm = async (e) => {
     e.preventDefault();
 
-    const errors = isSignup
-      ? validateSignup(formData)
-      : validateLogin(formData);
-
+    const errors = isSignup ? validateSignup(formData) : validateLogin(formData);
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
@@ -58,7 +55,6 @@ function Login() {
           if (token) {
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
-            console.log("Navigating to dashboard...");
             navigate("/dashboard", { replace: true });
           } else {
             alert("Signup failed: token not received");
@@ -69,13 +65,12 @@ function Login() {
             password: formData.password,
           });
 
-          const token = res.token; // ✅ correct place
+          const token = res.token;
           const user = res.user;
 
           if (token) {
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
-            console.log("Navigating to dashboard...");
             navigate("/dashboard", { replace: true });
           } else {
             alert("Login failed: token not received");
@@ -178,7 +173,9 @@ function Login() {
                 </div>
               </div>
 
-              <button className="loginbtn" type="submit">{isSignup ? "Sign Up" : "Login"}</button>
+              <button className="loginbtn" type="submit">
+                {isSignup ? "Sign Up" : "Login"}
+              </button>
 
               <p className="toggle_prompt">
                 {isSignup
