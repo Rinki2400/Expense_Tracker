@@ -31,10 +31,13 @@
   background-color: #f4f7fa;
 }
 
-/* left Dashboad css */
 
 .leftDash_container {
   width: 250px;
+  height: 100vh;           /* Full viewport height */
+  position: fixed;         /* Fix sidebar in place */
+  top: 20;                  /* Align below navbar if any */
+  left: 0;
   background-color: #fbfbfb;
   padding: 20px;
   border-right: 1px solid #e0e0e0;
@@ -42,7 +45,50 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow: hidden;        /* No scrollbar on sidebar */
+  z-index: 101;
 }
+
+/* Main dashboard content wrapper */
+.dashboard_main {
+  margin-left: 250px;      /* Offset for fixed sidebar */
+  height: 100vh;
+  background-color: #f4f7fa;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;        /* No scroll for dashboard_main */
+}
+
+/* Right content section */
+.right_container {
+  flex-grow: 1;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;         /* Scroll only here */
+  box-sizing: border-box;
+}
+
+/* Responsive: mobile/tablet */
+@media (max-width: 768px) {
+  .leftDash_container {
+    position: relative;     /* Sidebar in normal flow */
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border-right: none;
+    padding: 15px;
+  }
+  .dashboard_main {
+    margin-left: 0;
+    height: auto;
+    overflow: visible;
+    flex-direction: column;
+  }
+  .right_container {
+    height: auto;
+  }
+}
+
 .profile_container {
   display: flex;
   flex-direction: column;
@@ -111,7 +157,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #f5f7fa;
+  /* background-color: #f5f7fa; */
   height: 100%;
   width: 120%;
 }
@@ -161,7 +207,7 @@
 
 .right_dash_conatainer {
   padding: 20px;
-  background-color: #f5f7fa;
+  /* background-color: #f5f7fa; */
 }
 
 .top_container {

@@ -8,7 +8,6 @@ import { registerUser, loginUser } from "../../api/axios";
 
 function Login() {
   const [isSignup, setIsSignup] = useState(false);
-  const [avatar, setAvatar] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,13 +20,10 @@ function Login() {
     setIsSignup(!isSignup);
     setFormErrors({});
     setFormData({ name: "", email: "", password: "" });
-    setAvatar(null);
+    
   };
 
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
-  };
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,8 +42,7 @@ function Login() {
           data.append("name", formData.name);
           data.append("email", formData.email);
           data.append("password", formData.password);
-          if (avatar) data.append("avatar", avatar);
-
+       
           const res = await registerUser(data);
           const token = res.token;
           const user = res.user;
@@ -102,26 +97,7 @@ function Login() {
             <form className="form_container" onSubmit={handleForm}>
               {isSignup && (
                 <>
-                  <div className="avatar_upload_wrapper">
-                    <label htmlFor="avatarInput" className="avatar_circle">
-                      {avatar ? (
-                        <img
-                          src={URL.createObjectURL(avatar)}
-                          alt="Avatar"
-                          className="avatar_image"
-                        />
-                      ) : (
-                        <span className="plus_icon">+</span>
-                      )}
-                    </label>
-                    <input
-                      id="avatarInput"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleAvatarChange}
-                      style={{ display: "none" }}
-                    />
-                  </div>
+             
 
                   <div className="input_group">
                     <label>Full Name</label>

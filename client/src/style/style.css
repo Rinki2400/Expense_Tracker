@@ -344,11 +344,8 @@ form p span {
     font-size: 24px;
   }
 }
-@media (max-width: 700px) {
-  .right_container {
-    display: none !important;
-  }
-}
+
+
 
 
 
