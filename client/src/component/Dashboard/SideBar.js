@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FaTachometerAlt,
   FaMoneyBillWave,
@@ -10,14 +10,9 @@ import "../../style/Dashboard.css";
 
 function SideBar() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+
+
 
   const handleLogout = () => {
     localStorage.clear();
@@ -26,11 +21,7 @@ function SideBar() {
 
   return (
     <div className="leftDash_container">
-      {user && (
-        <div className="user_info">
-          <p>👋 Hi, {user.name || "User"}</p>
-        </div>
-      )}
+    
 
       <div className="dash_link">
         <NavLink to="/dashboard/home" className="link">
