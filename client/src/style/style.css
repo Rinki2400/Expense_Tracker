@@ -12,6 +12,12 @@ body {
   width: 100%;
 }
 
+.heading{
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e1e1e;
+}
+
 .left_container,
 .right_container {
   flex: 1;
@@ -49,16 +55,16 @@ body {
 
 .para_heading {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   color: #1e1e1e;
 }
 
 .para_heading p {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #585757;
   margin-bottom: 30px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 form label {
@@ -74,7 +80,7 @@ form label {
 }
 
 .input_field input {
-  width: 93%;
+  width: 80%;
   padding: 12px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -105,7 +111,7 @@ form label {
 }
 
 .loginbtn {
-  width: 100%;
+  width: 84%;
   padding: 12px;
   background-color: #1585e1;
   color: white;
@@ -123,7 +129,7 @@ form label {
 }
 
 form p {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 14px;
   color: #393939;
 }
@@ -143,7 +149,8 @@ form p span {
 .avatar_upload_wrapper {
   display: flex;
   justify-content: center;
-  margin-top: -5px;
+  margin-top: -50px;
+  margin-left: 142px;
   margin-bottom: 20px;
 }
 .avatar_circle {
@@ -335,6 +342,11 @@ form p span {
 
   .plus_icon {
     font-size: 24px;
+  }
+}
+@media (max-width: 700px) {
+  .right_container {
+    display: none !important;
   }
 }
 
